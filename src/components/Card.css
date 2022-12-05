@@ -1,0 +1,29 @@
+.card {
+    height: 250px;
+    width: 185px;
+
+    border: 2px solid black;
+}
+
+.img-container {
+    height: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1PX solid black;
+}
+
+.image {   
+    height: 100%;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+}
+
+.name-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    height: 25%;
+    border: 1PX solid black;
+}
