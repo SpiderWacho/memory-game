@@ -1,29 +1,67 @@
 .card {
-    height: 250px;
-    width: 185px;
+  position: relative;
+  height: 250px;
+  width: 185px;
+  border: 2px solid black;
+  animation: revealCards 0.4s ease-in-out forwards;
+}
 
-    border: 2px solid black;
+.backCard {
+  background-image: url("../img/backCard.png");
+  background-size: 100% 100%;
+  perspective: 1000px;
+  position: relative;
+  height: 250px;
+  width: 185px;
+  border: 2px solid black;
+  object-fit: cover;
+  animation: dealCards 1s ease-in-out forwards;
 }
 
 .img-container {
-    height: 75%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1PX solid black;
+  height: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
 }
 
-.image {   
-    height: 100%;
-    object-fit: contain;
-    mix-blend-mode: multiply;
+.image {
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: multiply;
+  max-width: 100%;
 }
 
 .name-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    height: 25%;
-    border: 1PX solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  height: 25%;
+  border: 1px solid black;
+  transform: scaleX(-1);
+}
+
+@keyframes dealCards {
+  0% {
+    left: 50%;
+
+    transform: rotateY(0deg);
+  }
+
+  100% {
+    left: 0%;
+    transform: rotateY(90deg);
+  }
+}
+
+@keyframes revealCards {
+  0% {
+    transform: rotateY(90deg);
+  }
+
+  100% {
+    transform: rotateY(180deg);
+  }
 }

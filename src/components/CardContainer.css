@@ -1,0 +1,6 @@
+.cardContainer {
+  display: flex;
+  gap: 15px;
+  justify-content: space-evenly;
+  align-items: center;
+}

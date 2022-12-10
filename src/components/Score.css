@@ -1,0 +1,12 @@
+.scoreContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  padding-right: 3%;
+}
+
+.currentScore,
+.maxScore {
+  text-align: left;
+  color: white;
+}
