@@ -9,4 +9,6 @@
 .maxScore {
   text-align: left;
   color: white;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2rem;
 }
