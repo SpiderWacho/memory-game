@@ -1,6 +1,9 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import Card from "./Card";
 import "./CardContainer.css";
+import LevelChange from "./LevelChange";
+import GameOver from "./GameOver";
 
 import spidey from "../img/spidey.jpg";
 import hulk from "../img/hulk.png";
@@ -73,27 +76,31 @@ const heroes = [
 ];
 
 function CardContainer({ setScore, level }) {
-  const [quantity, setQuantity] = useState(5);
   const [selectedCards, setSelectedCards] = useState([]);
-  const [randomCards, setRandomCards] = useState([]);
   const [cardsToShow, setCardsToShow] = useState([]);
   const [cardVisible, setCardVisible] = useState(false);
+  const [changeLevel, setChangeLevel] = useState(true);
+  const [gameOver, setGameOver] = useState(false);
 
   useEffect(() => {
-    fillCards([]);
-  }, []);
+    let quantity = 5;
+    if (level === 1) {
+      quantity = 7;
+    } else if (level === 2) {
+      quantity = 10;
+    } else if (level === 3) {
+      setGameOver(true);
+    }
+
+    fillCards(selectedCards, quantity);
+  }, [selectedCards, level]);
 
   useEffect(() => {
-    fillCards(selectedCards);
-  }, [selectedCards]);
-
-  useEffect(() => {
-    console.log(quantity);
-  }, [quantity]);
-
-  useEffect(() => {
-    console.log(cardsToShow);
-  }, [cardsToShow]);
+    if (level === 1 || level === 2) {
+      setSelectedCards([]);
+      renderLevelChange();
+    }
+  }, [level]);
 
   if (cardVisible === false) {
     setTimeout(() => {
@@ -101,32 +108,22 @@ function CardContainer({ setScore, level }) {
     }, 750);
   }
 
-  const checkLevel = () => {
-    if (level === 0) {
-      setQuantity(5);
-    } else if (level === 1) {
-      setQuantity(7);
-    } else if (level === 2) {
-      setQuantity(10);
-    }
-  };
-
   const getRandomHero = () => {
     const newMin = Math.ceil(0);
     const newMax = Math.floor(heroes.length);
     return heroes[Math.floor(Math.random() * (newMax - newMin) + newMin)];
   };
 
-  const fillCards = array => {
-    checkLevel();
+  const fillCards = (array, cardsToDraw) => {
     const cardArray = [...array];
-    while (cardArray.length < quantity) {
+    while (cardArray.length < cardsToDraw) {
       const hero = getRandomHero();
       if (!cardArray.some(card => hero.id === card.id)) {
         cardArray.push(hero);
       }
     }
-    setCardsToShow(cardArray);
+    const shuffledArray = cardArray.sort((a, b) => 0.5 - Math.random());
+    setCardsToShow(shuffledArray);
   };
 
   const markSelected = hero => {
@@ -141,18 +138,41 @@ function CardContainer({ setScore, level }) {
     }
   };
 
+  const renderLevelChange = () => {
+    setChangeLevel(true);
+    setTimeout(() => {
+      setChangeLevel(false);
+    }, 1700);
+  };
+
+  const restartGame = () => {
+    setCardVisible(false);
+    setSelectedCards([]);
+    setScore(0);
+    setGameOver(false);
+  };
+
   return (
-    <div className="cardContainer">
-      {cardsToShow.map(card => (
-        <Card
-          hero={card}
-          markSelected={markSelected}
-          cardVisible={cardVisible}
-          key={card.id}
-        />
-      ))}
-    </div>
+    <>
+      <div className="cardContainer">
+        {cardsToShow.map(card => (
+          <Card
+            hero={card}
+            markSelected={markSelected}
+            cardVisible={cardVisible}
+            key={card.id}
+          />
+        ))}
+      </div>
+      {changeLevel && <LevelChange level={level} />}
+      {gameOver && <GameOver restartGame={restartGame} />}
+    </>
   );
 }
+
+CardContainer.propTypes = {
+  setScore: PropTypes.func.isRequired,
+  level: PropTypes.number.isRequired
+};
 
 export default CardContainer;
