@@ -5,32 +5,28 @@
   --card-width:  185px;
 }
 
+
 .card {
   position: relative;
-  height: var(--card-heigth);
-  width: var(--card-width);
+  height: calc(var(--card-heigth) - 90px);
+  width: calc(var(--card-width) - 80px);
   border: 3px inset white;
   outline: 2px solid black;
   animation: revealCards 0.4s ease-in-out forwards;
   box-shadow: 0px 3px 5px .3px black;
-
 }
-
-
-
 
 .backCard {
   background-image: url("../img/backCard.png");
   background-size: 100% 100%;
   perspective: 1000px;
   position: relative;
-  height: var(--card-heigth);
-  width: var(--card-width);
+  height: calc(var(--card-heigth) - 100px);
+  width: calc(var(--card-width) - 80px);
   border: 2px solid black;
   object-fit: cover;
   animation: dealCards .8s ease-in-out forwards;
   box-shadow: 0px 3px 5px .3px black;
-
 }
 
 .img-container {
@@ -56,8 +52,7 @@
   height: 25%;
   transform: scaleX(-1);
   font-family: 'Oswald', sans-serif;
-  font-size: 1.2rem;
-
+  font-size: 1rem;
 }
 
 @keyframes dealCards {
@@ -81,4 +76,20 @@
   100% {
     transform: rotateY(180deg);
   }
+}
+
+
+
+@media only screen and (min-width: 900px) {
+
+  .card {
+    height: var(--card-heigth);
+    width: var(--card-width);
+  }
+  
+  .backCard {
+    height: var(--card-heigth);
+    width: var(--card-width);
+  }
+  
 }

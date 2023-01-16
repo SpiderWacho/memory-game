@@ -6,10 +6,9 @@
   box-sizing: border-box;
 }
 
-
 .header {
-  height: 10vh;
-  background-color: rgb(6, 8, 41);
+  height: 5vh;
+  background-color: rgb(34, 34, 34);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -19,16 +18,43 @@
   padding-left: 20px;
   color: white;
   font-family: 'Indie Flower', cursive;
+  font-size: 1rem;
 }
 
 .content {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 85vh;
+  height: 90vh;
   background-color: rgb(41, 41, 41);
+  overflow: auto;
 }
 
 .footer {
   height: 5vh;
+  background-color: rgb(34, 34, 34);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-text {
+  color: rgb(83, 83, 83);
+  font-size: 0.6rem;
+  font-family: 'Oswald', sans-serif;
+}
+
+@media only screen and (min-width: 900px) {
+  .header {
+    height: 10vh;
+  }
+
+  .content {
+    height: 85vh;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
 }
