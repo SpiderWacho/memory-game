@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import "./Score.css";
+import PropTypes from "prop-types";
 
 function Score({ score, maxScore, updateMax }) {
   useEffect(() => {
@@ -12,5 +13,11 @@ function Score({ score, maxScore, updateMax }) {
     </div>
   );
 }
+
+Score.propTypes = {
+  score: PropTypes.number.isRequired,
+  maxScore: PropTypes.number.isRequired,
+  updateMax: PropTypes.func.isRequired
+};
 
 export default Score;
