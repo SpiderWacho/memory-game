@@ -1,8 +1,8 @@
 import React from "react";
 import "./Card.css";
+import PropTypes from "prop-types";
 
 function Card({ hero, markSelected, cardVisible }) {
-  // console.log(hero);
   return (
     <div>
       {cardVisible ? (
@@ -26,5 +26,11 @@ function Card({ hero, markSelected, cardVisible }) {
     </div>
   );
 }
+
+Card.propTypes = {
+  hero: PropTypes.object.isRequired,
+  markSelected: PropTypes.func.isRequired,
+  cardVisible: PropTypes.bool.isRequired
+};
 
 export default Card;
