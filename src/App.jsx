@@ -9,15 +9,13 @@ function App() {
   const [level, setLevel] = useState(0);
 
   useEffect(() => {
-    if (score === 5) {
+    if (score === 0) {
+      setLevel(0);
+    } else if (score === 5) {
       setLevel(1);
-    }
-
-    if (score === 12) {
+    } else if (score === 12) {
       setLevel(2);
-    }
-
-    if (score === 20) {
+    } else if (score === 22) {
       setLevel(3);
     }
   }, [score]);
@@ -37,7 +35,12 @@ function App() {
       <div className="content">
         <CardContainer setScore={setScore} level={level} />
       </div>
-      <div className="footer" />
+      <div className="footer">
+        <p className="footer-text">
+          Made as a project for the Odin Project Course
+        </p>
+        <p className="footer-text">Gaston Vecchio</p>
+      </div>
     </div>
   );
 }
