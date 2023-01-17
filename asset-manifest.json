@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/memory-game/static/css/main.69d60c26.css",
+    "main.js": "/memory-game/static/js/main.b3330389.js",
+    "static/media/hulk.png": "/memory-game/static/media/hulk.8ba3202cf57e7464aa42.png",
+    "static/media/humanTorch.png": "/memory-game/static/media/humanTorch.42aab681324a6b8321f5.png",
+    "static/media/doctorStrange.png": "/memory-game/static/media/doctorStrange.e4e686432c7a37010d4c.png",
+    "static/media/thor.png": "/memory-game/static/media/thor.9891d7c2f7eb216c8a23.png",
+    "static/media/namor.png": "/memory-game/static/media/namor.930b5af7f6fe63d26708.png",
+    "static/media/gambit.png": "/memory-game/static/media/gambit.1de8566ea3b7a5dc8220.png",
+    "static/media/daredevil.png": "/memory-game/static/media/daredevil.3e9995c9ba9a8c058f2c.png",
+    "static/media/spidey.jpg": "/memory-game/static/media/spidey.df0e3c2c94b5210f7748.jpg",
+    "static/media/deadpool.png": "/memory-game/static/media/deadpool.26bcbd812952534289f7.png",
+    "static/media/ironman.jpg": "/memory-game/static/media/ironman.389a935f06c86e52a188.jpg",
+    "static/media/nightCrawler.jpg": "/memory-game/static/media/nightCrawler.ad03c6f03237bcaee35d.jpg",
+    "index.html": "/memory-game/index.html",
+    "main.69d60c26.css.map": "/memory-game/static/css/main.69d60c26.css.map",
+    "main.b3330389.js.map": "/memory-game/static/js/main.b3330389.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.69d60c26.css",
+    "static/js/main.b3330389.js"
+  ]
+}
