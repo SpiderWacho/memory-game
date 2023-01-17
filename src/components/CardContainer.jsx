@@ -79,34 +79,8 @@ function CardContainer({ setScore, level }) {
   const [selectedCards, setSelectedCards] = useState([]);
   const [cardsToShow, setCardsToShow] = useState([]);
   const [cardVisible, setCardVisible] = useState(false);
-  const [changeLevel, setChangeLevel] = useState(true);
+  const [changeLevel, setChangeLevel] = useState(false);
   const [gameOver, setGameOver] = useState(false);
-
-  useEffect(() => {
-    let quantity = 5;
-    if (level === 1) {
-      quantity = 7;
-    } else if (level === 2) {
-      quantity = 10;
-    } else if (level === 3) {
-      setGameOver(true);
-    }
-
-    fillCards(selectedCards, quantity);
-  }, [selectedCards, level]);
-
-  useEffect(() => {
-    if (level === 1 || level === 2) {
-      setSelectedCards([]);
-      renderLevelChange();
-    }
-  }, [level]);
-
-  if (cardVisible === false) {
-    setTimeout(() => {
-      setCardVisible(true);
-    }, 750);
-  }
 
   const getRandomHero = () => {
     const newMin = Math.ceil(0);
@@ -122,9 +96,42 @@ function CardContainer({ setScore, level }) {
         cardArray.push(hero);
       }
     }
-    const shuffledArray = cardArray.sort((a, b) => 0.5 - Math.random());
+    const shuffledArray = cardArray.sort(() => 0.5 - Math.random());
     setCardsToShow(shuffledArray);
   };
+
+  useEffect(() => {
+    let quantity = 5;
+    if (level === 1) {
+      quantity = 7;
+    } else if (level === 2) {
+      quantity = 10;
+    } else if (level === 3) {
+      setGameOver(true);
+    }
+
+    fillCards(selectedCards, quantity);
+  }, [selectedCards, level]);
+
+  const renderLevelChange = () => {
+    setChangeLevel(true);
+    setTimeout(() => {
+      setChangeLevel(false);
+    }, 1700);
+  };
+
+  useEffect(() => {
+    if (level === 1 || level === 2) {
+      setSelectedCards([]);
+      renderLevelChange();
+    }
+  }, [level]);
+
+  if (cardVisible === false) {
+    setTimeout(() => {
+      setCardVisible(true);
+    }, 750);
+  }
 
   const markSelected = hero => {
     if (!selectedCards.some(card => card.id === hero.id)) {
@@ -136,13 +143,6 @@ function CardContainer({ setScore, level }) {
       setSelectedCards([]);
       setScore(0);
     }
-  };
-
-  const renderLevelChange = () => {
-    setChangeLevel(true);
-    setTimeout(() => {
-      setChangeLevel(false);
-    }, 1700);
   };
 
   const restartGame = () => {
